@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-autowire="byName">
+
+  <!--================== 缓存相关服务 ================ -->
+
+
+
+
+  <bean id="NORMALFLOW_NULL_AC_ACTION" class="tpl.AccetpAction">
+
+  </bean>
+
+  <bean id="normalFlow_NULL_AC_TRANSFORMER" class="tpl.Transformer">
+    <property name="continueTransform" value="false"/>
+    <property name="actionList">
+      <list>
+        <ref bean="NORMALFLOW_NULL_AC_ACTION"/>
+      </list>
+    </property>
+  </bean>
+
+  <bean  id="normalFlow" class="tpl.FlowTemplate">
+     <property name="transformMap">
+       <map>
+         <entry  key="NULL_AC">
+            <ref bean="normalFlow_NULL_AC_TRANSFORMER"/>
+         </entry>
+
+         <entry  key="AC_SU">
+           <ref bean="normalFlow_NULL_AC_TRANSFORMER"/>
+         </entry>
+       </map>
+     </property>
+  </bean>
+
+  <bean id="normalFlow.transform" class="java.util.HashMap">
+    <constructor-arg>
+
+      <map>
+        <entry key="NULL" value="AC"/>
+        <entry key="AC" value="SU"/>
+      </map>
+    </constructor-arg>
+
+  </bean>
+
+
+
+
+</beans>

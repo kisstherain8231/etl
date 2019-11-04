@@ -1,8 +1,12 @@
 package app;
 
 import config.AppConfig;
+import groovy.GroovyEngine;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import service.PayService;
+import script.Processor;
+import tpl.Context;
+import tpl.TplEngine;
+import util.SpringContextUtils;
 
 public class App {
 
@@ -11,9 +15,27 @@ public class App {
         AnnotationConfigApplicationContext annotationConfigApplicationContext
             = new AnnotationConfigApplicationContext(AppConfig.class);
 
-       PayService payService = (PayService) annotationConfigApplicationContext.getBean("payService");
+       /* PayService payService = (PayService) annotationConfigApplicationContext
+            .getBean("payService");
 
-       payService.pay("", "");
+        payService.pay("", "");*/
+
+        SpringContextUtils.setContext(annotationConfigApplicationContext);
+
+        Processor processor =   GroovyEngine.getBean();
+
+        SpringContextUtils.autowireBean(processor);
+
+        String result = processor.process();
+        System.out.println(result);
+
+        TplEngine tplEngine = new TplEngine();
+
+        tplEngine.transform("normalFlow", "NULL",
+            "AC", new Context(), annotationConfigApplicationContext);
+
+
+
     }
 
 }
