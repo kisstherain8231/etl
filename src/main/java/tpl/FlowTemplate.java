@@ -5,14 +5,14 @@ import java.util.Map;
 public class FlowTemplate {
 
 
-    Map<String, Transformer> transformMap;
+    Map<TransferStatus, Transform> transformMap;
 
 
-    public Map<String, Transformer> getTransformMap() {
+    public Map<TransferStatus, Transform> getTransformMap() {
         return transformMap;
     }
 
-    public void setTransformMap(Map<String, Transformer> transformMap) {
+    public void setTransformMap(Map<TransferStatus, Transform> transformMap) {
         this.transformMap = transformMap;
     }
 }

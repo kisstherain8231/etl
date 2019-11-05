@@ -2,7 +2,7 @@ package tpl;
 
 import java.util.List;
 
-public class Transformer {
+public class Transform {
 
     private boolean continueTransform;
 

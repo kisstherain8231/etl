@@ -11,11 +11,11 @@ public class TplEngine {
         AnnotationConfigApplicationContext annotationConfigApplicationContext) {
         FlowTemplate flowTemplate = (FlowTemplate) annotationConfigApplicationContext.getBean(key);
 
-        Map<String, Transformer> transformMap = flowTemplate.getTransformMap();
+        Map<String, Transform> transformMap = flowTemplate.getTransformMap();
 
         StringBuilder status = new StringBuilder();
         status.append(srcStatus).append("_").append(destStatus);
-        Transformer actions = transformMap.get(status.toString());
+        Transform actions = transformMap.get(status.toString());
 
         for (Action action : actions.getActionList()) {
             action.process(context);
