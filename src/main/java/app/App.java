@@ -3,6 +3,7 @@ package app;
 import config.AppConfig;
 import groovy.GroovyEngine;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.statemachine.StateMachine;
 import script.Processor;
 import tpl.Context;
 import tpl.TplEngine;
@@ -33,6 +34,10 @@ public class App {
 
         tplEngine.transform("normalFlow", "NULL",
             "AC", new Context(), annotationConfigApplicationContext);
+
+
+        StateMachine stateMachine = (StateMachine) annotationConfigApplicationContext.getBean("stateMachine");
+
 
 
 

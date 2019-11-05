@@ -9,6 +9,7 @@ public class TplEngine {
     public void transform(String key,
         String srcStatus, String destStatus, Context context,
         AnnotationConfigApplicationContext annotationConfigApplicationContext) {
+        /*
         FlowTemplate flowTemplate = (FlowTemplate) annotationConfigApplicationContext.getBean(key);
 
         Map<String, Transform> transformMap = flowTemplate.getTransformMap();
@@ -35,7 +36,7 @@ public class TplEngine {
             return;
         }
 
-        transform(key, destStatus, nextStatus, context, annotationConfigApplicationContext);
+        transform(key, destStatus, nextStatus, context, annotationConfigApplicationContext);*/
 
     }
 
